@@ -21,4 +21,4 @@ jobs:
         with:
           push: true
           tags: |
-            ghcr.io/chrisdeutsch/mumble-server:latest
+            ghcr.io/chrisdeutsch/docker-mumble:latest
