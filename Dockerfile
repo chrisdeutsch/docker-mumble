@@ -26,7 +26,6 @@ RUN : \
         libspeechd-dev \
         libssl-dev \
         libxi-dev \
-        libzeroc-ice-dev \
         pkg-config \
         protobuf-compiler \
         qtbase5-dev \
@@ -44,6 +43,8 @@ WORKDIR /root/mumble/build
 RUN : \
     && cmake \
        -Dclient=OFF \
+       -Ddbus=OFF \
+       -Dice=OFF \
        -DCMAKE_BUILD_TYPE=Release \
        /root/mumble/mumble-* \
     && make -j1
@@ -61,14 +62,12 @@ RUN : \
         libcap2 \
         libprotobuf23 \
         libqt5core5a \
-        libqt5dbus5 \
         libqt5network5 \
         libqt5sql5 \
         libqt5sql5-mysql \
         libqt5sql5-psql \
         libqt5sql5-sqlite \
         libqt5xml5 \
-        libzeroc-ice3.7 \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 	
