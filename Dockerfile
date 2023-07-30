@@ -7,7 +7,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN : \
     && apt-get update \
-    && apt-get upgrade \
     && apt-get install --no-install-recommends -y \
         build-essential \
         ca-certificates \
@@ -57,7 +56,6 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 RUN : \
     && apt-get update \
-    && apt-get upgrade \
     && apt-get install --no-install-recommends -y \
         libavahi-compat-libdnssd1 \
         libcap2 \
