@@ -6,7 +6,7 @@ on:
       - master
 
   schedule:
-    - cron: '30 5 * * 7'
+    - cron: '30 5 * * 0'
 
 jobs:
   build-and-push-image:
