@@ -6,8 +6,9 @@ ARG MUMBLE_RELEASE=1.4.287
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN : \
-    && apt update \
-    && apt install --no-install-recommends -y \
+    && apt-get update \
+    && apt-get upgrade \
+    && apt-get install --no-install-recommends -y \
         build-essential \
         ca-certificates \
         cmake \
@@ -32,7 +33,7 @@ RUN : \
         qtbase5-dev \
         qttools5-dev \
         qttools5-dev-tools \
-    && apt clean \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /root/mumble
@@ -55,8 +56,9 @@ FROM debian:bullseye
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN : \
-    && apt update \
-    && apt install --no-install-recommends -y \
+    && apt-get update \
+    && apt-get upgrade \
+    && apt-get install --no-install-recommends -y \
         libavahi-compat-libdnssd1 \
         libcap2 \
         libprotobuf23 \
