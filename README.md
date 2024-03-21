@@ -8,7 +8,6 @@ An exemplary `docker-compose.yml` is shown below:
 
 ```yaml
 ---
-version: "3"
 services:
   server:
     image: ghcr.io/chrisdeutsch/mumble-server:latest
