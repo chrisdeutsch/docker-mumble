@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-if [[ ! -f /config/murmur.ini ]]; then
+if [[ ! -f /config/mumble-server.ini ]]; then
     sed \
         's|^database=.*$|database=/data/mumble-server.sqlite|' \
-        /etc/murmur/murmur.ini \
-        > /config/murmur.ini
+        /etc/murmur/mumble-server.ini \
+        > /config/mumble-server.ini
 fi
 
 exec "$@"
