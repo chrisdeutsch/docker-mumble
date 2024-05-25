@@ -73,9 +73,9 @@ COPY --from=build /root/mumble/build/mumble-server /usr/bin/mumble-server
 COPY --from=build /root/mumble/build/mumble-server.ini /etc/murmur/mumble-server.ini
 
 RUN : \
-    && groupadd --gid 1000 murmur \
-    && useradd --gid 1000 --uid 1000 murmur \
-    && install -d -o murmur -g murmur /config /data
+    && groupadd --gid 1000 mumble-server \
+    && useradd --gid 1000 --uid 1000 mumble-server \
+    && install -d -o mumble-server -g mumble-server /config /data
 
 USER murmur
 EXPOSE 64738/tcp 64738/udp
