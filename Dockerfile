@@ -1,7 +1,7 @@
 # Build stage
-FROM debian:bullseye AS build
+FROM debian:bookworm AS build
 
-ARG MUMBLE_RELEASE=1.4.287
+ARG MUMBLE_RELEASE=1.5.634
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -49,18 +49,17 @@ RUN : \
        /root/mumble/mumble-* \
     && make -j1
 
-
 # Distribution stage
-FROM debian:bullseye
+FROM debian:bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN : \
     && apt-get update \
     && apt-get install --no-install-recommends -y \
+        libprotobuf32 \
         libavahi-compat-libdnssd1 \
         libcap2 \
-        libprotobuf23 \
         libqt5core5a \
         libqt5network5 \
         libqt5sql5 \
@@ -72,7 +71,7 @@ RUN : \
     && rm -rf /var/lib/apt/lists/*
 	
 COPY --from=build /root/mumble/build/mumble-server /usr/bin/mumble-server
-COPY --from=build /root/mumble/build/murmur.ini /etc/murmur/murmur.ini
+COPY --from=build /root/mumble/build/mumble-server.ini /etc/murmur/mumble-server.ini
 
 RUN : \
     && groupadd --gid 1000 murmur \
@@ -85,4 +84,4 @@ EXPOSE 64738/tcp 64738/udp
 ADD ./entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
-CMD ["mumble-server", "-v", "-fg", "-ini", "/config/murmur.ini"]
+CMD ["mumble-server", "-v", "-fg", "-ini", "/config/mumble-server.ini"]
