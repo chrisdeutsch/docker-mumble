@@ -43,7 +43,6 @@ WORKDIR /root/mumble/build
 RUN : \
     && cmake \
        -Dclient=OFF \
-       -Ddbus=OFF \
        -Dice=OFF \
        -DCMAKE_BUILD_TYPE=Release \
        /root/mumble/mumble-* \
