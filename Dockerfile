@@ -77,7 +77,7 @@ RUN : \
     && useradd --gid 1000 --uid 1000 mumble-server \
     && install -d -o mumble-server -g mumble-server /config /data
 
-USER murmur
+USER mumble-server
 EXPOSE 64738/tcp 64738/udp
 
 ADD ./entrypoint.sh /entrypoint.sh
