@@ -1,5 +1,5 @@
 # Build stage
-FROM debian:bookworm AS build
+FROM debian:bookworm-slim AS build
 
 ARG MUMBLE_RELEASE=1.5.634
 
@@ -49,7 +49,7 @@ RUN : \
     && make -j1
 
 # Distribution stage
-FROM debian:bookworm
+FROM debian:bookworm-slim
 
 ARG DEBIAN_FRONTEND=noninteractive
 
