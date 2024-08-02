@@ -66,7 +66,7 @@ RUN : \
         libqt5sql5-psql \
         libqt5sql5-sqlite \
         libqt5xml5 \
-    && apt clean \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 	
 COPY --from=build /root/mumble/build/mumble-server /usr/bin/mumble-server
