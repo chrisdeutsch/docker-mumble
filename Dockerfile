@@ -1,7 +1,7 @@
 # Build stage
 FROM debian:bookworm-slim AS build
 
-ARG MUMBLE_RELEASE=1.5.634
+ARG MUMBLE_RELEASE=1.5.735
 
 ARG DEBIAN_FRONTEND=noninteractive
 
