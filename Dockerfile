@@ -51,6 +51,9 @@ RUN : \
 # Distribution stage
 FROM debian:bookworm-slim
 
+ADD ./LICENSE /licenses/LICENSE
+ADD ./LICENSE_MUMBLE /licenses/LICENSE_MUMBLE
+
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN : \
@@ -68,7 +71,7 @@ RUN : \
         libqt5xml5 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
-	
+
 COPY --from=build /root/mumble/build/mumble-server /usr/bin/mumble-server
 COPY --from=build /root/mumble/build/mumble-server.ini /etc/murmur/mumble-server.ini
 
