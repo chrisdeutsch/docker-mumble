@@ -2,7 +2,7 @@
 FROM debian:bookworm-slim@sha256:7e490910eea2861b9664577a96b54ce68ea3e02ce7f51d89cb0103a6f9c386e0 AS build
 
 # renovate: datasource=github-releases depName=mumble packageName=mumble-voip/mumble
-ARG MUMBLE_RELEASE=v1.5.634
+ARG MUMBLE_VERSION=v1.5.634
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -37,7 +37,7 @@ RUN : \
 
 WORKDIR /root/mumble
 RUN : \
-    && curl -L -o mumble.tar.gz "https://github.com/mumble-voip/mumble/releases/download/${MUMBLE_RELEASE}/mumble-${MUMBLE_RELEASE#"v"}.tar.gz" \
+    && curl -L -o mumble.tar.gz "https://github.com/mumble-voip/mumble/releases/download/${MUMBLE_VERSION}/mumble-${MUMBLE_VERSION#'v'}.tar.gz" \
     && tar -xf mumble.tar.gz
 
 WORKDIR /root/mumble/build
