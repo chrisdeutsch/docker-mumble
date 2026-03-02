@@ -1,5 +1,5 @@
 # Build stage
-FROM debian:bookworm-slim@sha256:98f4b71de414932439ac6ac690d7060df1f27161073c5036a7553723881bffbe AS build
+FROM debian:bookworm-slim@sha256:74d56e3931e0d5a1dd51f8c8a2466d21de84a271cd3b5a733b803aa91abf4421 AS build
 
 # renovate: datasource=github-releases depName=mumble packageName=mumble-voip/mumble
 ARG MUMBLE_VERSION=v1.5.857
@@ -50,7 +50,7 @@ RUN : \
     && make -j1
 
 # Distribution stage
-FROM debian:bookworm-slim@sha256:98f4b71de414932439ac6ac690d7060df1f27161073c5036a7553723881bffbe
+FROM debian:bookworm-slim@sha256:74d56e3931e0d5a1dd51f8c8a2466d21de84a271cd3b5a733b803aa91abf4421
 
 ADD ./LICENSE /licenses/LICENSE
 ADD ./LICENSE_MUMBLE /licenses/LICENSE_MUMBLE
