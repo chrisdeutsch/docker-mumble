@@ -22,3 +22,18 @@ services:
       - "64738:64738/tcp"
       - "64738:64738/udp"
 ```
+
+## Configuration
+
+On first start, a default `mumble-server.ini` is created in the `/config` volume. Edit this file to customize the server (e.g. set a password, server name, or max users) and restart the container to apply changes.
+
+## Volumes
+
+| Path | Description |
+|---|---|
+| `/config` | Server configuration (`mumble-server.ini`) |
+| `/data` | Persistent data (SQLite database) |
+
+## Ports
+
+The server uses port **64738** for both TCP (control) and UDP (voice).
