@@ -47,10 +47,14 @@ RUN : \
        -Dice=OFF \
        -DCMAKE_BUILD_TYPE=Release \
        /root/mumble/mumble-* \
-    && make -j1
+    && make -j$(nproc)
 
 # Distribution stage
 FROM debian:bookworm-slim@sha256:f06537653ac770703bc45b4b113475bd402f451e85223f0f2837acbf89ab020a
+
+LABEL org.opencontainers.image.source="https://github.com/chrisdeutsch/docker-mumble"
+LABEL org.opencontainers.image.description="Containerized Mumble VoIP server"
+LABEL org.opencontainers.image.licenses="MIT"
 
 ADD ./LICENSE /licenses/LICENSE
 ADD ./LICENSE_MUMBLE /licenses/LICENSE_MUMBLE
@@ -83,6 +87,8 @@ RUN : \
 
 USER mumble-server
 EXPOSE 64738/tcp 64738/udp
+HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
+    CMD bash -c 'echo > /dev/tcp/localhost/64738'
 
 ADD ./entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
