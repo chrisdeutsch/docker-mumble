@@ -2,7 +2,7 @@
 FROM debian:bookworm-slim@sha256:60eac759739651111db372c07be67863818726f754804b8707c90979bda511df AS build
 
 # renovate: datasource=github-releases depName=mumble packageName=mumble-voip/mumble
-ARG MUMBLE_VERSION=v1.5.901
+ARG MUMBLE_VERSION=v1.5.915
 
 ARG DEBIAN_FRONTEND=noninteractive
 
