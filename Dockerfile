@@ -1,5 +1,5 @@
 # Build stage
-FROM debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587 AS build
+FROM debian:bookworm-slim@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8 AS build
 
 # renovate: datasource=github-releases depName=mumble packageName=mumble-voip/mumble
 ARG MUMBLE_VERSION=v1.5.939
@@ -50,7 +50,7 @@ RUN : \
     && make -j$(nproc)
 
 # Distribution stage
-FROM debian:bookworm-slim@sha256:7c7b2c966bc9ee8cedfeef67e0e279108992c77681fa595db4a9d65c06ccc587
+FROM debian:bookworm-slim@sha256:7ff6ba31527b9e336162fa061746c366c4b2032f4d2cff2078bea43f78efe3f8
 
 LABEL org.opencontainers.image.source="https://github.com/chrisdeutsch/docker-mumble"
 LABEL org.opencontainers.image.description="Containerized Mumble VoIP server"
